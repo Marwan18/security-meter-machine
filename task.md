@@ -57,3 +57,11 @@ this is ford privet key
  i copied the id_rsa key in a text on my machine and finally get logged in.
 ## user flag
 ![Screenshot from 2021-04-13 16-40-07](https://user-images.githubusercontent.com/34393428/114571867-45bd3080-9c77-11eb-9207-933c4701ba6c.png)
+ 
+ i found it in the home directory
+
+## root flag
+
+ its `lxd` ,so i have to create an image for lxd thus you need to perform the following the action
+
+![Screenshot from 2021-04-13 16-49-27](https://user-images.githubusercontent.com/34393428/114632784-a96b4c00-9cbf-11eb-925f-841d5c7522ae.png)
